@@ -134,3 +134,9 @@ proxies = {
 
 response4 = requests.get(url, headers=headers, proxies=proxies)
 
+# 如果你有钱购买了收费代理,那么可以在代理中加入你的用户名和密码
+
+proxies = {
+    "http": "http://user:pass@10.10.1.10:3128/",
+}
+
