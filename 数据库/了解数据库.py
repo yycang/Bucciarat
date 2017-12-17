@@ -6,6 +6,7 @@
 1.RDBMS
 2.SQL
 3.MySQL
+4.MongoDB与NoSQL
 
 """
 
@@ -78,5 +79,38 @@ CCL:    指针控制语言, 通过控制指针完成表的操作, declare cursor
 
 最主要的特点:
 开源, 免费, 使用范围广, 跨平台支持性好, 提供了多语言调用的API
+
+缺点:
+扩展性差, 大数据下IO压力大, 表结构更改困难
+
+"""
+
+#################
+# 4.MongoDB与NoSQL
+#################
+
+"""
+
+NoSQL
+non-relational      或指 Not Only SQL
+指的是非关系型数据库
+
+MySQL以前是王者, 但是大部分MySQL都是IO密集型的, 大数据量高并发的环境下, MySQL应用的开发也越来越复杂
+NoSQL的优势相比较MySQL
+易扩展, 大数据量,高性能, 灵活的数据模型, 高可用等优点
+
+让NoSQL和MySQL的紧密结合会给数据库发展带来新的思路, 让关系型数据库注重在关系上, NoSQL关注在存储上
+
+MongoDB是一个基于分布式文件存储的NoSQL数据库
+运行稳定, 性能高
+
+SQl术语         MongoDB术语         解释
+database        database          数据库
+table           collection        数据表/集合
+row             document          数据记录行/文档
+column          field             数据字段/域
+index           index             索引
+table joins                       表连接, MongoDB不支持
+primary key     primary key       主键, MongoDB自动将_id字段设置为主键
 
 """
