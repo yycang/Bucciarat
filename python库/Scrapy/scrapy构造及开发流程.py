@@ -12,6 +12,8 @@ scrapy框架中文文档 1.0:   http://scrapy-chs.readthedocs.io/zh_CN/1.0/index
 3.scrapy shell
 4.Spider类
 5.Request类
+6.反反爬中间件
+7.log信息
 
 """
 
@@ -257,15 +259,68 @@ class LoginSpider(scrapy.Spider):
             return
 
 
+##############
+# 6.反反爬中间件
+##############
 
 
+"""
+
+爬虫会占用服务器的资源, 影响正常用户, 所以服务器必须要做反爬
+同时也为了保护自己公司的数据不被爬取
+
+服务器常见的反爬手段:
+判明用户身份      用户头, Cookies, 验证码等
+分析用户行为      在线活动时间, 并发识别, 添加正常浏览器不能访问
+动态加载数据      ajax, js
+
+反反爬措施:
+1.模拟用户头
+在setting中设置, 或在下载器中间件设置动态用户头
+2.请求延迟
+setting文件中 DOWNLOAD_DELAY = n(默认是3s, 每3s发送一个请求)
+3.Cookie检测
+setting文件中COOKIES_ENABLED = False
+4.IP代理池
+5.动态数据加载
+使用selenium
+
+使用中间件的时候, 需要在setting中进行设置
+
+"""
 
 
+##########
+# 7.log信息
+##########
+
+"""
+
+当你输出爬虫时会产生很多log信息, 如果这些信息很碍事的话, 可以选择关闭它们
+
+LOG_ENABLED     是否开启log
+
+当然还有其他方法, 比如把log信息写入到文件中
+
+LOG_FILE = '文件.log'
+
+当然你想筛选出log信息也是可以的, log信息分为5个等级
+
+LOG_LEVEL = ' '
+            CRITICAL    严重错误
+            ERROR       一般错误
+            WARNING     警告信息
+            INFO        一般信息
+            DEBUG       调试信息
+    (如果你设置了一个等级, 那么这个等级上面的信息也会被自动打印出来, 例如设置为INFO, 那么除了DEBUG调试信息不会显示, 其他信息也会显示)
 
 
+部署时候可能会用到的参数:
+CONCURRENT_REQUESTS     下载器并发数量设置, 默认16
+DEPTH_LIMIT             爬取深度
+DOWNLOAD_TIMEOUT        设置超时时间
+CONCURRENT_ITEMS        item管道同时处理item数量
+CONCURRENT_REQUESTS_PER_DOMAIN      域名的并发请求
+CONCURRENT_REQUESTS_PER_IP          ip的并发请求数量
 
-
-
-
-
-
+"""
