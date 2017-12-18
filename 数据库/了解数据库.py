@@ -113,4 +113,10 @@ index           index             索引
 table joins                       表连接, MongoDB不支持
 primary key     primary key       主键, MongoDB自动将_id字段设置为主键
 
+MongoDB的核心元素:
+数据库     集合      文档
+集合就相当于关系型数据库中的表
+文档就对应着关系型数据库中的行, 由键值对构成, 类似于字典
+数据库是一个物理容器,里面可以包含多个文档
+
 """
