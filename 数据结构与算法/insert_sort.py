@@ -14,7 +14,9 @@
 
 def insert_sort(li):
     n = len(li)
+    # 从第二个元素开始, 即坐标为1的元素开始进行插入
     for i in range(1, n):
+        # 从第i个元素开始向前比较, 如果小于, 则交换位置
         for j in range(i, 0, -1):
             if li[j] < li[j-1]:
                 li[j], li[j-1] = li[j-1], li[j]
